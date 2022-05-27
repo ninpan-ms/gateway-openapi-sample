@@ -11,18 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-@RequestMapping("/")
+@RequestMapping("/pets")
 @RestController
 public class PetsController {
 
     private List<PetResource> petsList;
 
-    @GetMapping(value = "/")
-    public List<PetResource> listPets() {
-        return petsList;
-    }
-
-    @PostMapping(value = "/")
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public PetResource createPet(@RequestBody PetResource pet) {
         if (petsList == null){
@@ -37,7 +32,6 @@ public class PetsController {
         PetResource pet = new PetResource();
         pet.setId(petId);
         pet.setName("test");
-        pet.setTag("tag-pet");
 
         return pet;
     }

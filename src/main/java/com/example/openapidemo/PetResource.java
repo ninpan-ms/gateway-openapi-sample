@@ -6,8 +6,6 @@ public class PetResource {
 
     private String name;
 
-    private String tag;
-
     public long getId() {
         return id;
     }
@@ -22,13 +20,5 @@ public class PetResource {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getTag() {
-        return tag;
-    }
-
-    public void setTag(String tag) {
-        this.tag = tag;
     }
 }

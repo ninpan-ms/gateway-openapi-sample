@@ -1,0 +1,167 @@
+{
+    "openapi": "3.0.3",
+    "info":
+    {
+        "title": "Api Documentation",
+        "description": "Api Documentation",
+        "termsOfService": "urn:tos",
+        "contact":
+        {},
+        "license":
+        {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0"
+        },
+        "version": "1.0"
+    },
+    "servers":
+    [
+        {
+            "url": "http://localhost:8080",
+            "description": "Inferred Url"
+        }
+    ],
+    "tags":
+    [
+        {
+            "name": "pets-controller",
+            "description": "Pets Controller"
+        }
+    ],
+    "paths":
+    {
+        "/pets":
+        {
+            "post":
+            {
+                "tags":
+                [
+                    "pets-controller"
+                ],
+                "summary": "createPet",
+                "operationId": "createPetUsingPOST",
+                "requestBody":
+                {
+                    "content":
+                    {
+                        "application/json":
+                        {
+                            "schema":
+                            {
+                                "$ref": "#/components/schemas/PetResource"
+                            }
+                        }
+                    }
+                },
+                "responses":
+                {
+                    "201":
+                    {
+                        "description": "Created",
+                        "content":
+                        {
+                            "*/*":
+                            {
+                                "schema":
+                                {
+                                    "$ref": "#/components/schemas/PetResource"
+                                }
+                            }
+                        }
+                    },
+                    "401":
+                    {
+                        "description": "Unauthorized"
+                    },
+                    "403":
+                    {
+                        "description": "Forbidden"
+                    },
+                    "404":
+                    {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/pets/{petId}":
+        {
+            "get":
+            {
+                "tags":
+                [
+                    "pets-controller"
+                ],
+                "summary": "findPet",
+                "operationId": "findPetUsingGET",
+                "parameters":
+                [
+                    {
+                        "name": "petId",
+                        "in": "path",
+                        "description": "petId",
+                        "required": true,
+                        "style": "simple",
+                        "schema":
+                        {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses":
+                {
+                    "200":
+                    {
+                        "description": "OK",
+                        "content":
+                        {
+                            "*/*":
+                            {
+                                "schema":
+                                {
+                                    "$ref": "#/components/schemas/PetResource"
+                                }
+                            }
+                        }
+                    },
+                    "401":
+                    {
+                        "description": "Unauthorized"
+                    },
+                    "403":
+                    {
+                        "description": "Forbidden"
+                    },
+                    "404":
+                    {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        }
+    },
+    "components":
+    {
+        "schemas":
+        {
+            "PetResource":
+            {
+                "title": "PetResource",
+                "type": "object",
+                "properties":
+                {
+                    "id":
+                    {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "name":
+                    {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
