@@ -30,7 +30,7 @@
     ],
     "paths":
     {
-        "/pets":
+        "/example/pets":
         {
             "post":
             {
@@ -84,7 +84,7 @@
                 }
             }
         },
-        "/pets/{petId}":
+        "/example/pets/{petId}":
         {
             "get":
             {
